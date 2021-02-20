@@ -1,4 +1,4 @@
-import { sum, count, max, binarySearch } from "./04-quick-sort.js";
+import { sum, count, max, binarySearch, quickSort } from "./04-quick-sort.js";
 
 describe('recursively get array elements sum', () => {
     test('sum([]) === 0', () => {
@@ -63,5 +63,23 @@ describe('finds element in sorted array via binary search and returns its index'
     })
     test('find 5 in [1,2,4,5,7,8,9,10,11,12,15,20,45,60]', () => {
         expect(binarySearch([1,2,4,5,7,8,9,10,11,12,15,20,45,60], 5)).toBe(3)
+    })
+})
+
+describe('sorts given array', () => {
+    test('[] => []', () => {
+        expect(quickSort([])).toStrictEqual([])
+    })
+    test('[4] => [4]', () => {
+        expect(quickSort([4])).toStrictEqual([4])
+    })
+    test('[7,4] => [4,7]', () => {
+        expect(quickSort([7,4])).toStrictEqual([4,7])
+    })
+    test('[7,4,8,4,9,4,3,1] => [1,3,4,4,4,7,8,9]', () => {
+        expect(quickSort([7,4,8,4,9,4,3,1])).toStrictEqual([1,3,4,4,4,7,8,9])
+    })
+    test('[9,8,6,2,4,3,1] => [1,2,3,4,6,8,9]', () => {
+        expect(quickSort([9,8,6,2,4,3,1])).toStrictEqual([1,2,3,4,6,8,9])
     })
 })
