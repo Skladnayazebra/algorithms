@@ -84,3 +84,20 @@ export const binarySearch = (array, item) => {
         }
     }
 }
+
+export const quickSort = (array) => {
+    if (array.length < 2) {
+        return array
+    }
+    const pivot = array[0]
+    const lessArray = []
+    const moreArray = []
+    for (const item of array.slice(1)) {
+        if (item <= pivot) {
+            lessArray.push(item)
+        } else {
+            moreArray.push(item)
+        }
+    }
+    return [...quickSort(lessArray), pivot, ...quickSort(moreArray)]
+}
