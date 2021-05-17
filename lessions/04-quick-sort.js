@@ -48,6 +48,7 @@ export const max = (array) => {
     }
 }
 
+// search in sorted array
 export const binarySearch = (array, item) => {
     // base
     if (array.length === 0) {
@@ -64,7 +65,7 @@ export const binarySearch = (array, item) => {
     const middleIndex = Math.floor(array.length / 2)
     const middleElement = array[middleIndex]
 
-
+    // element found!
     if (middleElement === item) {
         return middleIndex
     }
@@ -74,7 +75,8 @@ export const binarySearch = (array, item) => {
     }
     // если элемент в середине меньше, чем искомый - ищем  в правой половине
     if (middleElement < item) {
-        // если элемент в правом массиве найден, нам нужно сложить их индексы
+        // если элемент в правом массиве найден, нам нужно сложить индексы.
+        // вот почему: [0,1,2,3,[0,1,2]] => [0,1,2,3,4,5,6]
         const foundIndex = binarySearch(array.slice(middleIndex + 1), item)
 
         if (foundIndex === null) {
@@ -85,10 +87,13 @@ export const binarySearch = (array, item) => {
     }
 }
 
+// O(n * log n)
 export const quickSort = (array) => {
+    // base
     if (array.length < 2) {
         return array
     }
+    // recursive
     const pivot = array[0]
     const lessArray = []
     const moreArray = []
